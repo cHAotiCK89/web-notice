@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>noticetest</title>
+</head>
+<body>
+    <button id="notifyBtn">通知を送る</button>
+
+    <script>
+        const notifyBtn = document.getElementById('notifyBtn');
+
+notifyBtn.addEventListener('click', function() {
+
+  Notification.requestPermission().then(function(permission) {
+
+    if(permission === 'granted') {
+            
+      var notification = new Notification('タイトル', {
+        body: 'Hello!! Nice to meet to.',
+        icon: 'img/hello.png'
+      });
+
+      notification.onclick = function() {
+        window.open('https://example.com');      
+      };
+
+    }
+
+  });
+
+});
+    </script>
+</body>
+</html>
